@@ -90,6 +90,7 @@ export const generateFileData = async <T>({
     }
 
     try {
+      // BUG: This triggers file re-download on every field update since media collection always returns url/filename
       if (url && url.startsWith('/') && !disableLocalStorage) {
         const filePath = `${staticPath}/${filename}`
         const response = await getFileByPath(filePath)
